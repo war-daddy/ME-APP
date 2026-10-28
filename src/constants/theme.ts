@@ -1,65 +1,55 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://unistyl.es/), etc.
- */
+export const colors = {
+  background: '#FFFFFF',
+  surface: '#F5F5F7',
+  primary: '#3478F6',
+  text: '#111111',
+  secondaryText: '#777777',
+  border: '#E5E5EA',
+  error: '#D92D20',
+  white: '#FFFFFF',
+};
 
-import '@/global.css';
+const lightTheme = {
+  ...colors,
+  backgroundElement: colors.surface,
+  backgroundSelected: '#E8F0FF',
+  textSecondary: colors.secondaryText,
+};
 
-import { Platform } from 'react-native';
+const darkTheme = {
+  background: '#111111',
+  backgroundElement: '#222226',
+  backgroundSelected: '#263A5E',
+  primary: '#78A9FF',
+  text: '#FFFFFF',
+  textSecondary: '#B0B0B8',
+  secondaryText: '#B0B0B8',
+  surface: '#222226',
+  border: '#3A3A40',
+  error: '#FF6B62',
+  white: '#FFFFFF',
+};
 
-export const Colors = {
-  light: {
-    text: '#000000',
-    background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
-  },
-  dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
-  },
-} as const;
+export const Colors = { light: lightTheme, dark: darkTheme };
+export type ThemeColor = keyof typeof lightTheme;
+export const Fonts = { regular: 'System', medium: 'System', semiBold: 'System', bold: 'System' };
 
-export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
+export const spacing = {
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  xxl: 48,
+};
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: 'var(--font-display)',
-    serif: 'var(--font-serif)',
-    rounded: 'var(--font-rounded)',
-    mono: 'var(--font-mono)',
-  },
-});
+export const Spacing = spacing;
+export const BottomTabInset = 72;
+export const MaxContentWidth = 720;
 
-export const Spacing = {
-  half: 2,
-  one: 4,
-  two: 8,
-  three: 16,
-  four: 24,
-  five: 32,
-  six: 64,
-} as const;
-
-export const BottomTabInset = Platform.select({ ios: 50, android: 80 }) ?? 0;
-export const MaxContentWidth = 800;
+export const radius = {
+  sm: 8,
+  md: 14,
+  lg: 20,
+  pill: 999,
+};
